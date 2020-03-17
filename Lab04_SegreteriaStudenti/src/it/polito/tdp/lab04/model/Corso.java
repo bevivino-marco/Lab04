@@ -59,5 +59,13 @@ public boolean equals(Object obj) {
 		return false;
 	return true;
 }
+@Override
+public String toString() {
+	return String.format("%s", nome);
+}
+public int compareTo(Corso c) {
+	return (c.getNome()).compareTo(this.nome);
+	
+}
 
 }

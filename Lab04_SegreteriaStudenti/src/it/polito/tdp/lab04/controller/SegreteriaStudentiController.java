@@ -7,6 +7,7 @@ package it.polito.tdp.lab04.controller;
 
 import java.net.URL;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -21,6 +22,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class SegreteriaStudentiController {
+	List <Corso> lCorsi = new LinkedList<Corso>() ;
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -82,9 +84,10 @@ public class SegreteriaStudentiController {
 		setComboItems();
 	}
 	private void setComboItems() {
-
-		
-		corsi.getItems().addAll(model.getTuttiCorsi());
+      // lCorsi = new LinkedList<Corso>();
+		lCorsi =model.getTuttiCorsi();
+		//Collections.sort(lCorsi);
+		corsi.getItems().addAll(lCorsi);
 	}
 
 }
