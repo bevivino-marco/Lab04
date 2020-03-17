@@ -78,7 +78,27 @@ public class CorsoDAO {
 	 * Ottengo tutti gli studenti iscritti al Corso
 	 */
 	public void getStudentiIscrittiAlCorso(Corso corso) {
-		// TODO
+		// TODO	
+		final String sql = "SELECT matricola FROM iscrizione WHERE codins=?";
+        List <Studente> studenti = new LinkedList<Studente>();
+		
+
+		try {
+			Connection conn = ConnectDB.getConnection();
+			PreparedStatement st = conn.prepareStatement(String.format(sql, corso));
+            st.setString(1, corso.getCodins());
+			ResultSet rs = st.executeQuery();
+
+			while (rs.next()) {
+				
+			}
+
+			conn.close();
+
+		} catch (SQLException e) {
+			// e.printStackTrace();
+			throw new RuntimeException("Errore Db", e);
+		}
 	}
 
 	/*
