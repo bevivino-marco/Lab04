@@ -64,9 +64,9 @@ public class SegreteriaStudentiController {
 
     @FXML
     void doCercaIscrittiCorso(ActionEvent event) {
-    	if (!corsi.getValue().equals("corsi")) {
+    	try {
          txtResult.appendText(model.getStudentiIscritti(corsi.getValue()).toString());;
-         }else { 
+         }catch (Exception e) { 
         	    txtResult.appendText("selezionare un corso");
         	   }
     }
