@@ -66,7 +66,7 @@ public class Studente {
 		return true;
 	}
 	public String toString() {
-		return nome+" "+cognome;
+		return nome+" "+cognome+" "+matricola+" "+cds+"\n";
 	}
 	
 }

@@ -13,7 +13,7 @@ public class TestModel {
 		System.out.println(model.getCorso(c).getNome());
 		Studente s = new Studente (154817);
 		System.out.println(model.getStudente(s).toString());
-
+//01KSUPG
 	}
 	
 

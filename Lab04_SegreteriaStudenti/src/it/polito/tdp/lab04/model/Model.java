@@ -23,4 +23,7 @@ public class Model {
 		daos.getStudente(s);
 		return s;
 		}
+	public List<Studente> getStudentiIscritti(Corso c){
+		return daoc.getStudentiIscrittiAlCorso(c);
+	}
 }

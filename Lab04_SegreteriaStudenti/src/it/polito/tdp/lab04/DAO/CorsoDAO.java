@@ -77,9 +77,9 @@ public class CorsoDAO {
 	/*
 	 * Ottengo tutti gli studenti iscritti al Corso
 	 */
-	public void getStudentiIscrittiAlCorso(Corso corso) {
+	public List<Studente> getStudentiIscrittiAlCorso(Corso corso) {
 		// TODO	
-		final String sql = "SELECT matricola FROM iscrizione WHERE codins=?";
+		final String sql = "SELECT * FROM iscrizione,studente WHERE iscrizione.matricola=studente.matricola AND codins=?";
         List <Studente> studenti = new LinkedList<Studente>();
 		
 
@@ -90,10 +90,11 @@ public class CorsoDAO {
 			ResultSet rs = st.executeQuery();
 
 			while (rs.next()) {
-				
+				studenti.add(new Studente (rs.getInt("matricola"), rs.getString("nome"),rs.getString("cognome"), rs.getString("CDS")));
 			}
 
 			conn.close();
+			return studenti;
 
 		} catch (SQLException e) {
 			// e.printStackTrace();

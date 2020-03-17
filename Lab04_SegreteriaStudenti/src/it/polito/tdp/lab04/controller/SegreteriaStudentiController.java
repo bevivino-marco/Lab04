@@ -64,7 +64,11 @@ public class SegreteriaStudentiController {
 
     @FXML
     void doCercaIscrittiCorso(ActionEvent event) {
-
+    	if (!corsi.getValue().equals("corsi")) {
+         txtResult.appendText(model.getStudentiIscritti(corsi.getValue()).toString());;
+         }else { 
+        	    txtResult.appendText("selezionare un corso");
+        	   }
     }
 
     @FXML
@@ -92,7 +96,7 @@ public class SegreteriaStudentiController {
 		// TODO Auto-generated method stub
 		this.model=model;
 		setComboItems();
-		txtResult.setDisable(true);
+		
 	}
 	private void setComboItems() {
       // lCorsi = new LinkedList<Corso>();
@@ -100,6 +104,7 @@ public class SegreteriaStudentiController {
 		Collections.sort(lCorsi);
 		corsi.getItems().addAll(lCorsi);
 	}
+	
 
 }
 
