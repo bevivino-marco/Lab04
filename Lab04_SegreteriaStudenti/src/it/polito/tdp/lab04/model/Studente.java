@@ -12,6 +12,12 @@ public class Studente {
 		this.cognome = cognome;
 		this.cds = cds;
 	}
+	public Studente() {
+	}
+
+	public Studente(int matricola) {
+		this.matricola = matricola;
+	}
 	public int getMatricola() {
 		return matricola;
 	}
@@ -59,6 +65,8 @@ public class Studente {
 			return false;
 		return true;
 	}
-	
+	public String toString() {
+		return nome+" "+cognome;
+	}
 	
 }

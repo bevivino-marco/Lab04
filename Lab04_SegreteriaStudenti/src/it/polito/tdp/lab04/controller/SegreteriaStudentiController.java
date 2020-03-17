@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 import it.polito.tdp.lab04.DAO.CorsoDAO;
 import it.polito.tdp.lab04.model.Corso;
 import it.polito.tdp.lab04.model.Model;
+import it.polito.tdp.lab04.model.Studente;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,7 +46,16 @@ public class SegreteriaStudentiController {
     private TextArea txtResult; // Value injected by FXMLLoader
 
 	private Model model;
-	
+    @FXML
+    void doNomCogn(ActionEvent event) {
+    	try {
+    		Studente s =model.getStudente(new Studente (Integer.parseInt(txtMatricola.getText())));
+    		txtNome.appendText(s.getNome());
+    		txtCognome.appendText(s.getCognome());
+    	}catch(Exception e){
+    		txtResult.appendText("inserire una matricola corretta");
+    	}
+    }
 
     @FXML
     void doCercaCorsi(ActionEvent event) {
@@ -82,6 +92,7 @@ public class SegreteriaStudentiController {
 		// TODO Auto-generated method stub
 		this.model=model;
 		setComboItems();
+		txtResult.setDisable(true);
 	}
 	private void setComboItems() {
       // lCorsi = new LinkedList<Corso>();

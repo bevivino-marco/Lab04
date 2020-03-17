@@ -50,7 +50,7 @@ public class CorsoDAO {
 
 		final String sql = "SELECT * FROM corso WHERE codins=?";
 
-		List<Corso> corsi = new LinkedList<Corso>();
+		
 
 		try {
 			Connection conn = ConnectDB.getConnection();

@@ -30,7 +30,7 @@
                <children>
                   <Label text="Studente" />
                   <TextField fx:id="txtMatricola" promptText="matricola" />
-                  <Button mnemonicParsing="false" text="^" textFill="#1cdd4f" />
+                  <Button mnemonicParsing="false" onAction="#doNomCogn" text="^" textFill="#1cdd4f" />
                   <TextField fx:id="txtNome" />
                   <TextField fx:id="txtCognome" prefHeight="25.0" prefWidth="140.0" />
                </children>

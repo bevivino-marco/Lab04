@@ -3,19 +3,24 @@ package it.polito.tdp.lab04.model;
 import java.util.List;
 
 import it.polito.tdp.lab04.DAO.CorsoDAO;
+import it.polito.tdp.lab04.DAO.StudenteDAO;
 
 public class Model {
-	CorsoDAO dao = new CorsoDAO();
-	
+	CorsoDAO daoc = new CorsoDAO();
+	StudenteDAO daos= new StudenteDAO();
 	
 	public List<Corso> getTuttiCorsi(){
 		
-		return dao.getTuttiICorsi();
+		return daoc.getTuttiICorsi();
 	}
 	
 	public Corso getCorso (Corso c) {
 		//return dao.getCorso(nomeCorso);
-		dao.getCorso(c);
+		daoc.getCorso(c);
 		return c;
 	}
+	public Studente getStudente(Studente s) {
+		daos.getStudente(s);
+		return s;
+		}
 }
