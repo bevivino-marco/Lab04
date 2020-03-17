@@ -12,4 +12,8 @@ public class Model {
 		
 		return dao.getTuttiICorsi();
 	}
+	
+	public Corso getCorso (String nomeCorso) {
+		return dao.getCorso(nomeCorso);
+	}
 }

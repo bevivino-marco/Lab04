@@ -22,7 +22,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class SegreteriaStudentiController {
-	List <Corso> lCorsi = new LinkedList<Corso>() ;
+	List <Corso> lCorsi ;
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -86,7 +86,7 @@ public class SegreteriaStudentiController {
 	private void setComboItems() {
       // lCorsi = new LinkedList<Corso>();
 		lCorsi =model.getTuttiCorsi();
-		//Collections.sort(lCorsi);
+		Collections.sort(lCorsi);
 		corsi.getItems().addAll(lCorsi);
 	}
 

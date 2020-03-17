@@ -28,16 +28,7 @@ public class CorsoDAO {
 			ResultSet rs = st.executeQuery();
 
 			while (rs.next()) {
-/*
-				String codins = rs.getString("codins");
-				int numeroCrediti = rs.getInt("crediti");
-				String nome = rs.getString("nome");
-				int periodoDidattico = rs.getInt("pd");
-         
-				System.out.println(codins + " " + numeroCrediti + " " + nome + " " + periodoDidattico);
-                */
-				// Crea un nuovo JAVA Bean Corso
-				// Aggiungi il nuovo oggetto Corso alla lista corsi
+
 				Corso c = new Corso (rs.getString("codins"), rs.getInt("crediti") ,rs.getString("nome"), rs.getInt("pd"));
 				corsi.add(c);
 			}
@@ -54,6 +45,29 @@ public class CorsoDAO {
 	 * Dato un codice insegnamento, ottengo il corso
 	 */
 	public Corso getCorso(String corso) {
+
+		final String sql = "SELECT * FROM corso WHERE nome= %s";
+
+		List<Corso> corsi = new LinkedList<Corso>();
+
+		try {
+			Connection conn = ConnectDB.getConnection();
+			PreparedStatement st = conn.prepareStatement(String.format(sql, corso));
+
+			ResultSet rs = st.executeQuery();
+
+			while (rs.next()) {
+				Corso c = new Corso (rs.getString("codins"), rs.getInt("crediti") ,rs.getString("nome"), rs.getInt("pd"));
+				
+               return c;
+			}
+
+			
+
+		} catch (SQLException e) {
+			// e.printStackTrace();
+			throw new RuntimeException("Errore Db", e);
+		}
 		return null;
 	
 	}
