@@ -5,7 +5,12 @@ private String codins;
 private int crediti;
 private String nome;
 private int pd;
+public Corso() {
+}
 
+public Corso(String codins) {
+	this.codins = codins;
+}
 public Corso(String codins, int crediti, String nome, int pd) {
 	super();
 	this.codins = codins;

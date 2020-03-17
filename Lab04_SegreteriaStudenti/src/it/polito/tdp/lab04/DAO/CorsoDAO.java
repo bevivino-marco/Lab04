@@ -31,9 +31,11 @@ public class CorsoDAO {
 
 				Corso c = new Corso (rs.getString("codins"), rs.getInt("crediti") ,rs.getString("nome"), rs.getInt("pd"));
 				corsi.add(c);
+				
 			}
-
+            conn.close();
 			return corsi;
+			
 
 		} catch (SQLException e) {
 			// e.printStackTrace();
@@ -44,31 +46,31 @@ public class CorsoDAO {
 	/*
 	 * Dato un codice insegnamento, ottengo il corso
 	 */
-	public Corso getCorso(String corso) {
+	public void getCorso(Corso corso) {
 
-		final String sql = "SELECT * FROM corso WHERE nome= %s";
+		final String sql = "SELECT * FROM corso WHERE codins=?";
 
 		List<Corso> corsi = new LinkedList<Corso>();
 
 		try {
 			Connection conn = ConnectDB.getConnection();
 			PreparedStatement st = conn.prepareStatement(String.format(sql, corso));
-
+            st.setString(1, corso.getCodins());
 			ResultSet rs = st.executeQuery();
 
-			while (rs.next()) {
-				Corso c = new Corso (rs.getString("codins"), rs.getInt("crediti") ,rs.getString("nome"), rs.getInt("pd"));
-				
-               return c;
+			if (rs.next()) {
+				corso.setCrediti(rs.getInt("crediti"));
+				corso.setNome(rs.getString("nome"));
+				corso.setPd(rs.getInt("pd"));
 			}
 
-			
+			conn.close();
 
 		} catch (SQLException e) {
 			// e.printStackTrace();
 			throw new RuntimeException("Errore Db", e);
 		}
-		return null;
+		
 	
 	}
 

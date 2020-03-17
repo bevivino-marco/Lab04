@@ -9,8 +9,8 @@ public class TestModel {
 		/*
 		 * 	Write here your test model
 		 */
-		Corso c = model.getCorso("Ingegneria della qualità");
-		System.out.println(c.getNome());
+		Corso c = new Corso ("01NBAPG");
+		System.out.println(model.getCorso(c).getNome());
 
 	}
 
