@@ -4,6 +4,7 @@ import java.util.List;
 
 import it.polito.tdp.lab04.DAO.CorsoDAO;
 import it.polito.tdp.lab04.DAO.StudenteDAO;
+import javafx.scene.control.TextField;
 
 public class Model {
 	CorsoDAO daoc = new CorsoDAO();
@@ -25,5 +26,11 @@ public class Model {
 		}
 	public List<Studente> getStudentiIscritti(Corso c){
 		return daoc.getStudentiIscrittiAlCorso(c);
+	}
+
+	public List<Corso> cercaCorsiStudente(int m) {
+		// TODO Auto-generated method stub
+		Studente s = new Studente (m);
+		return daos.cercaCorsi(s);
 	}
 }

@@ -9,6 +9,7 @@ import java.util.List;
 
 import it.polito.tdp.lab04.model.Corso;
 import it.polito.tdp.lab04.model.Studente;
+//simport javafx.scene.control.TextField;
 
 public class StudenteDAO {
 
@@ -38,5 +39,34 @@ public class StudenteDAO {
 			// e.printStackTrace();
 			throw new RuntimeException("Errore Db", e);
 		}
+	}
+
+	public List<Corso> cercaCorsi(Studente s) {
+		List <Corso> lc = new LinkedList<Corso>();
+		final String sql = "SELECT * FROM iscrizione,corso WHERE iscrizione.codins=corso.codins AND matricola=?";
+
+		
+
+		try {
+			Connection conn = ConnectDB.getConnection();
+			PreparedStatement st = conn.prepareStatement(sql);
+            st.setInt(1, s.getMatricola());
+			ResultSet rs = st.executeQuery();
+
+			while (rs.next()) {
+             
+				lc.add(new Corso (rs.getString("codins"), rs.getInt("crediti"), rs.getString("nome"), rs.getInt("pd")));
+			
+				
+			}
+            conn.close();
+			
+			return lc;
+
+		} catch (SQLException e) {
+			// e.printStackTrace();
+			throw new RuntimeException("Errore Db", e);
+		}
+		
 	}
 }

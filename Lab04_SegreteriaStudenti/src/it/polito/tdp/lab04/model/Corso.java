@@ -67,7 +67,7 @@ public boolean equals(Object obj) {
 }
 @Override
 public String toString() {
-	return String.format("%s", nome);
+	return codins+" "+ nome+" "+ crediti+ " "+ pd+ "\n";
 }
 @Override
 public int compareTo(Corso corsoInput) {

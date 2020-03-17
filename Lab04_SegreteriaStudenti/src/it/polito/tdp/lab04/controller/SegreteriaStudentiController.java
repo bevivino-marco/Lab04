@@ -59,7 +59,12 @@ public class SegreteriaStudentiController {
 
     @FXML
     void doCercaCorsi(ActionEvent event) {
-
+    	try {
+    		int matr =Integer.parseInt(txtMatricola.getText());
+    	txtResult.appendText(model.cercaCorsiStudente(matr).toString());
+    	}catch (Exception e) {
+    		txtResult.appendText("inserire una matricola corretta!!!");
+    	}
     }
 
     @FXML
