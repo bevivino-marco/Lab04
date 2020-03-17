@@ -5,6 +5,7 @@ private String codins;
 private int crediti;
 private String nome;
 private int pd;
+
 public Corso(String codins, int crediti, String nome, int pd) {
 	super();
 	this.codins = codins;
@@ -63,9 +64,9 @@ public boolean equals(Object obj) {
 public String toString() {
 	return String.format("%s", nome);
 }
-public int compareTo(Corso c) {
-	return (c.getNome()).compareTo(this.nome);
-	
+@Override
+public int compareTo(Corso corsoInput) {
+	return this.nome.compareTo(corsoInput.nome);
 }
 
 }
