@@ -6,9 +6,12 @@
 package it.polito.tdp.lab04.controller;
 
 import java.net.URL;
+import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.lab04.DAO.CorsoDAO;
+import it.polito.tdp.lab04.model.Corso;
 import it.polito.tdp.lab04.model.Model;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,7 +28,7 @@ public class SegreteriaStudentiController {
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
     @FXML
-    private ComboBox<?> corsi;
+    private ComboBox<Corso> corsi;
 
     @FXML // fx:id="txtMatricola"
     private TextField txtMatricola; // Value injected by FXMLLoader
@@ -40,7 +43,7 @@ public class SegreteriaStudentiController {
     private TextArea txtResult; // Value injected by FXMLLoader
 
 	private Model model;
-	CorsoDAO dao = new CorsoDAO();
+	
 
     @FXML
     void doCercaCorsi(ActionEvent event) {
@@ -73,10 +76,16 @@ public class SegreteriaStudentiController {
     }
 
 	public void setModel(Model model) {
-		corsi.setItems(dao.getTuttiICorsi());
+		
 		// TODO Auto-generated method stub
 		this.model=model;
-		
+		setComboItems();
 	}
+	private void setComboItems() {
+
+		
+		corsi.getItems().addAll(model.getTuttiCorsi());
+	}
+
 }
 
